@@ -1,0 +1,54 @@
+﻿@model IEnumerable<StackOverFlowApp.Web.Models.Item>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Top 50 Stackoverflow Questions.</h3>
+                <button id="btnRefresh" type="button" class="btn btn-default navbar-btn">Refresh..</button>
+            </div>
+            <div class="panel-body">
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">@item.title</h4>
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <button type="button" class="btn btn-default">User <span class="badge">@item.owner.display_name</span></button>
+                                            <button type="button" class="btn btn-default">Answer <span class="badge">@item.answer_count</span></button>
+                                            <button type="button" class="btn btn-default">Score <span class="badge">@item.score</span></button>
+                                            <div type="button" class="btn btn-default"><a href="@item.link" target="_blank" role="button">Read More..</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $('#btnRefresh').click(function () {
+            location.reload();
+        });
+    </script>
+}
