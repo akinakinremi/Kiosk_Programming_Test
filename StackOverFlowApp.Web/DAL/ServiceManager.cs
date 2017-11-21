@@ -8,48 +8,49 @@ using StackOverFlowApp.Web.Models;
 
 namespace StackOverFlowApp.Web.DAL
 {
-    public class ServiceBuilder : IServiceBuilder
+    public class ServiceManager : IServiceManager
     {
-        private string _serviceUrl = string.Empty;
+        private readonly string _serviceUrl = string.Empty;
 
-        public void SetMainUrl()
+        public ServiceManager()
         {
-            _serviceUrl = "https://api.stackexchange.com/2.2/questions?";
+            _serviceUrl = "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow";
         }
-        public void SetUrlPagesizeParameters()
-        {
-            if (!string.IsNullOrEmpty(_serviceUrl))
-            {
-                _serviceUrl += "pagesize=50";
-            }
-        }
-        public void SetUrlOrderParameters()
-        {
-            if (!string.IsNullOrEmpty(_serviceUrl))
-            {
-                _serviceUrl += "&" + "order=desc";
-            }
-        }
-        public void SetUrlSortParameters()
-        {
-            if (!string.IsNullOrEmpty(_serviceUrl))
-            {
-                _serviceUrl += "&" + "sort=creation";
-            }
-        }
-        public void SetUrlSiteParameters()
-        {
-            if (!string.IsNullOrEmpty(_serviceUrl))
-            {
-                _serviceUrl += "&" + "site=stackoverflow";
-            }
-        }
-        public string GetCompleteUrl()
-        {
-            if (!string.IsNullOrEmpty(_serviceUrl))
-            { return _serviceUrl; }
 
-            return string.Empty;
+        public ServiceManager(string questionId)
+        {
+            if (!string.IsNullOrEmpty(questionId))
+            {
+                _serviceUrl =
+                    string.Format(
+                        "https://api.stackexchange.com/2.2/questions/{0}?pagesize=1&order=desc&sort=activity&site=stackoverflow",
+                        questionId);
+            }
+        }
+
+        public Item GetQuestionById(string questionId)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(_serviceUrl))
+                {
+                    return null;
+                }
+
+                //Web Request Call
+                var responseJson = RequestCall(_serviceUrl);
+
+                if (!string.IsNullOrEmpty(responseJson))
+                {
+                    var myDeserializedObjList = (RootObject)JsonConvert.DeserializeObject(responseJson, typeof(RootObject));
+                    return myDeserializedObjList.items[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                Utilities.LogError(ex.Message, ex.StackTrace, "ServiceBuilder>>GetQuestionById Function Error");
+            }
+            return null;
         }
         public IEnumerable<Item> GetTopQuestions()
         {
@@ -68,7 +69,6 @@ namespace StackOverFlowApp.Web.DAL
                     var myDeserializedObjList = (RootObject)JsonConvert.DeserializeObject(responseJson, typeof(RootObject));
                     return myDeserializedObjList.items;
                 }
-
             }
             catch (Exception ex)
             {

@@ -149,14 +149,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\ServiceBuilder.cs" />
-    <Compile Include="DAL\ServiceDirector.cs" />
-    <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="DAL\ServiceManager.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IServiceBuilder.cs" />
-    <Compile Include="Interface\IUnitOfWork.cs" />
+    <Compile Include="Interface\IServiceManager.cs" />
     <Compile Include="IoC\NinjectDependencyResolver.cs" />
     <Compile Include="Models\BusinessObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

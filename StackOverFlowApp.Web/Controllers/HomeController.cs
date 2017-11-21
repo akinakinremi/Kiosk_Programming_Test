@@ -5,9 +5,9 @@ namespace StackOverFlowApp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IServiceManager _unitOfWork;
 
-        public HomeController(IUnitOfWork unitOfWork)
+        public HomeController(IServiceManager unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -18,6 +18,13 @@ namespace StackOverFlowApp.Web.Controllers
             var questions = _unitOfWork.GetTopQuestions();
             return View(questions);
         }
+
+        public ActionResult DetailQuestion()
+        {
+            
+            return View(questions);
+        }
+
 
         public ActionResult About()
         {
