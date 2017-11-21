@@ -27,6 +27,7 @@ namespace StackOverFlowApp.Web.Models
         public string link { get; set; }
         public string title { get; set; }
         public int? last_edit_date { get; set; }
+        public string body { get; set; }
     }
 
     public class RootObject

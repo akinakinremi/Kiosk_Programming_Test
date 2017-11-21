@@ -7,7 +7,6 @@
 <br />
 <br />
 
-
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-info">
@@ -29,8 +28,8 @@
                                         <div class="btn-group" role="group" aria-label="...">
                                             <button type="button" class="btn btn-default">User <span class="badge">@item.owner.display_name</span></button>
                                             <button type="button" class="btn btn-default">Answer <span class="badge">@item.answer_count</span></button>
-                                            <button type="button" class="btn btn-default">Score <span class="badge">@item.score</span></button>
-                                            <div type="button" class="btn btn-default"><a href="@item.link" target="_blank" role="button">Read More..</a></div>
+                                            <button type="button" class="btn btn-default">Score <span class="badge">@item.score</span></button>                                            
+                                            <div type="button" class="btn btn-default">@Html.ActionLink("Read More..","Details",new { questionid = item.question_id }, new { target = "_blank", role = "button"})</div>
                                         </div>
                                     </div>
                                 </div>

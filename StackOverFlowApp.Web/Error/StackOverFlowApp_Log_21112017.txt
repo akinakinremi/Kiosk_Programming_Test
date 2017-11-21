@@ -1,0 +1,14 @@
+Title: ServiceBuilder>>GetTopQuestions Function Error
+Message: The remote server returned an error: (407) Proxy Authentication Required.
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.ServiceManager.RequestCall(String url) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 87
+ at StackOverFlowApp.Web.DAL.ServiceManager.GetTopQuestions() in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 65
+Date&Time: 2017-11-21 16:36:53.215
+===============================================================================================
+Title: ServiceBuilder>>GetTopQuestions Function Error
+Message: The remote server returned an error: (407) Proxy Authentication Required.
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.ServiceManager.RequestCall(String url) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 87
+ at StackOverFlowApp.Web.DAL.ServiceManager.GetTopQuestions() in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 65
+Date&Time: 2017-11-21 16:39:49.448
+===============================================================================================

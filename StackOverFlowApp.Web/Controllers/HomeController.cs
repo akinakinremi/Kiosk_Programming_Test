@@ -5,27 +5,25 @@ namespace StackOverFlowApp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IServiceManager _unitOfWork;
+        private readonly IServiceManager _serviceManager;
 
-        public HomeController(IServiceManager unitOfWork)
+        public HomeController(IServiceManager serviceManager)
         {
-            _unitOfWork = unitOfWork;
+            _serviceManager = serviceManager;
         }
-
-
+        
         public ActionResult Index()
         {
-            var questions = _unitOfWork.GetTopQuestions();
+            var questions = _serviceManager.GetTopQuestions();
             return View(questions);
         }
 
-        public ActionResult DetailQuestion()
+        public ActionResult Details(string questionid)
         {
-            
+            var questions = _serviceManager.GetQuestionById(questionid);
             return View(questions);
         }
-
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "A little description about me.";

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
@@ -72,8 +71,7 @@ namespace StackOverFlowApp.Web
         private static void RegisterServices(IKernel kernel)
         {
             // unit of work per request
-            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-            kernel.Bind<IServiceBuilder>().To<ServiceBuilder>().InRequestScope();
+            kernel.Bind<IServiceManager>().To<ServiceManager>().InRequestScope();
             // default binding for everything except unit of work
            // kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().BindDefaultInterface());
         }

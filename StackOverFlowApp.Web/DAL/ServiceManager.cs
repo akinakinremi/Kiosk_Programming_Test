@@ -14,17 +14,15 @@ namespace StackOverFlowApp.Web.DAL
 
         public ServiceManager()
         {
-            _serviceUrl = "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow";
+            _serviceUrl = "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow&filter=withbody";
         }
 
         public ServiceManager(string questionId)
         {
             if (!string.IsNullOrEmpty(questionId))
             {
-                _serviceUrl =
-                    string.Format(
-                        "https://api.stackexchange.com/2.2/questions/{0}?pagesize=1&order=desc&sort=activity&site=stackoverflow",
-                        questionId);
+                //_serviceUrl = string.Format("https://api.stackexchange.com/2.2/questions/{0}?pagesize=1&order=desc&sort=activity&site=stackoverflow&filter=withbody",questionId);
+                _serviceUrl = string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionId);
             }
         }
 
@@ -82,6 +80,7 @@ namespace StackOverFlowApp.Web.DAL
             var request = (HttpWebRequest)WebRequest.Create(url);
 
             request.Method = "GET";
+           // request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2";
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
 
             var response = (HttpWebResponse)request.GetResponse();
