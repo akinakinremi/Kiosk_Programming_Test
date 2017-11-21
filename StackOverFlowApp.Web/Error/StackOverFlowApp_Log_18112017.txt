@@ -1,0 +1,21 @@
+Title: QuestionManager>>GetStackOverflowQuestionList Function Error
+Message: The remote server returned an error: (407) Proxy Authentication Required.
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.QuestionManager.RequestCall(String url) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\QuestionManager.cs:line 57
+ at StackOverFlowApp.Web.DAL.QuestionManager.GetStackOverflowQuestionList(String serviceUrl) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\QuestionManager.cs:line 35
+Date&Time: 2017-11-18 10:56:35.399
+===============================================================================================
+Title: QuestionManager>>GetStackOverflowQuestionList Function Error
+Message: The remote server returned an error: (407) Proxy Authentication Required.
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.QuestionManager.RequestCall(String url) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\QuestionManager.cs:line 57
+ at StackOverFlowApp.Web.DAL.QuestionManager.GetStackOverflowQuestionList(String serviceUrl) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\QuestionManager.cs:line 35
+Date&Time: 2017-11-18 11:03:15.615
+===============================================================================================
+Title: ServiceBuilder>>GetTopQuestions Function Error
+Message: The remote server returned an error: (407) Proxy Authentication Required.
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.ServiceBuilder.RequestCall(String url) in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceBuilder.cs:line 87
+ at StackOverFlowApp.Web.DAL.ServiceBuilder.GetTopQuestions() in c:\Applications\KioskTest2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceBuilder.cs:line 64
+Date&Time: 2017-11-18 15:55:59.058
+===============================================================================================
