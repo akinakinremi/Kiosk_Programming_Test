@@ -25,14 +25,17 @@
             <button type="button" class="btn btn-default">Score <span class="badge">@Model.score</span></button>
             @if (Model.tags != null)
             {
-                <button type="button" class="btn btn-default">
-                    Tags
+                if (Model.tags.Count() > 0)
+                {
+                    <button type="button" class="btn btn-default">
+                        Tags
 
-                    foreach (var item in Model.tags)
-                    {
-                    <span class="badge"> item </span>
-                    }
-                </button>
+                        foreach (var item in Model.tags)
+                        {
+                        <span class="badge"> item </span>
+                        }
+                    </button>
+                }
             }
         </div>
 
