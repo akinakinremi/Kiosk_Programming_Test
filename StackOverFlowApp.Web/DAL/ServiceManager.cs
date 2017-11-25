@@ -10,27 +10,30 @@ namespace StackOverFlowApp.Web.DAL
 {
     public class ServiceManager : IServiceManager
     {
-        private readonly string _serviceUrl = string.Empty;
+        private string _serviceUrl = string.Empty;
 
         public ServiceManager()
         {
             _serviceUrl = "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow&filter=withbody";
         }
 
-        public ServiceManager(string questionId)
-        {
-            if (!string.IsNullOrEmpty(questionId))
-            {
-                //_serviceUrl = string.Format("https://api.stackexchange.com/2.2/questions/{0}?pagesize=1&order=desc&sort=activity&site=stackoverflow&filter=withbody",questionId);
-                _serviceUrl = string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionId);
-            }
-        }
+        //public ServiceManager(string questionId)
+        //{
+        //    if (!string.IsNullOrEmpty(questionId))
+        //    {                
+        //        _serviceUrl = string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionId);
+        //    }
+        //}
 
         public Item GetQuestionById(string questionId)
         {
             try
             {
-                if (string.IsNullOrEmpty(_serviceUrl))
+                if (!string.IsNullOrEmpty(questionId))
+                {
+                    _serviceUrl = string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionId);
+                }
+                else
                 {
                     return null;
                 }
@@ -46,7 +49,7 @@ namespace StackOverFlowApp.Web.DAL
             }
             catch (Exception ex)
             {
-                Utilities.LogError(ex.Message, ex.StackTrace, "ServiceBuilder>>GetQuestionById Function Error");
+                Utilities.LogError(ex.Message, ex.StackTrace, "ServiceManager>>GetQuestionById Function Error");
             }
             return null;
         }
@@ -57,7 +60,7 @@ namespace StackOverFlowApp.Web.DAL
                 if (string.IsNullOrEmpty(_serviceUrl))
                 {
                     return null;
-                }
+                }               
 
                 //Web Request Call
                 var responseJson = RequestCall(_serviceUrl);

@@ -3,40 +3,40 @@
 @{
     ViewBag.Title = "Question Detail";
 }
-
 <br />
-<br />
-
-<div class="card">
-    <div class="card-header">
-        @Model.answer_count
-    </div>
-    <div class="card-body">
-        <h4 class="card-title">@Model.title</h4>
-        <p class="card-text"></p>
-
-        <pre><code>
-            @Model.body
-        </code></pre>
-
-        <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">User <span class="badge">@Model.owner.display_name</span></button>
-            <button type="button" class="btn btn-default">Answer <span class="badge">@Model.answer_count</span></button>
-            <button type="button" class="btn btn-default">Score <span class="badge">@Model.score</span></button>
-            @if (Model.tags != null)
-            {
-                <button type="button" class="btn btn-default">
-                    Tags
-
-                    foreach (var item in Model.tags)
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">@Model.title</h3>                
+            </div>
+            <div class="panel-body">
+                
+                <p>
+                    @Html.Raw(@Model.body)
+                </p>
+                <br />
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">User <span class="badge">@Model.owner.display_name</span></button>
+                    <button type="button" class="btn btn-default">Answer <span class="badge">@Model.answer_count</span></button>
+                    <button type="button" class="btn btn-default">Score <span class="badge">@Model.score</span></button>
+                    @if (Model.tags != null)
                     {
-                    <span class="badge"> item </span>
-                    }
-                </button>
-            }
-        </div>
+                            if (Model.tags.Count() > 0)
+                            {
+                            <button type="button" class="btn btn-default">
+                                Tags
 
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                @foreach (var item in Model.tags)
+                                {
+                                    <span class="badge"> @item </span>
+                                }
+                            </button>
+                            }
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

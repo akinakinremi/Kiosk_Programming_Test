@@ -37,5 +37,12 @@ namespace StackOverFlowApp.Web.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public JsonResult RefreshQuestions()
+        {
+            var questions = _serviceManager.GetTopQuestions();
+            return  Json(questions, JsonRequestBehavior.AllowGet);
+        }
     }
 }

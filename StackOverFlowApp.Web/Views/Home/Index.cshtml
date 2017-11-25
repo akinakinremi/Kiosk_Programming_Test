@@ -14,7 +14,7 @@
                 <h3 class="panel-title">Top 50 Stackoverflow Questions.</h3>
                 <button id="btnRefresh" type="button" class="btn btn-default navbar-btn">Refresh..</button>
             </div>
-            <div class="panel-body">
+            <div id="divRefresh" class="panel-body">
 
                 @if (Model != null)
                 {
@@ -45,9 +45,53 @@
 </div>
 
 @section scripts{
-    <script type="text/javascript">
-        $('#btnRefresh').click(function () {
-            location.reload();
-        });
-    </script>
+        
+<script type="text/javascript">
+ $(document).ready(function() {
+    $("#btnRefresh").click(function() {
+        RefreshList();
+    });
+});
+
+function RefreshList() {
+    //Ajax Call Get Initial Report
+    $.ajax({
+        type: "GET",
+        url: '/Home/RefreshQuestions',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+            if (data != null) {
+                $("#divRefresh").html('');
+                $.each(data, function (key, item) {                    
+                    var _data = "<div class='panel panel-default'>" +
+                    "<div class='panel-body'>" +
+                        "<div class='media'>" +
+                            "<div class='media-body'>" +
+                                "<h4 class='media-heading'> " + item.title + "</h4>" +
+                                "<div class'btn-group' role='group' aria-label='...'>" +
+                                    "<button type='button' class='btn btn-default'>User <span class='badge'> " + item.display_name + "</span></button>" +
+                                    "<button type='button' class='btn btn-default'>Answer <span class='badge'> " + item.answer_count + "</span></button>" +
+                                    "<button type='button' class='btn btn-default'>Score <span class='badge'> " + item.score + "</span></button>" +
+                                    "<div type='button' class='btn btn-default'>" +
+                                    "<a href='/Home/Details?questionid=" + item.question_id + "' role='button' target='_blank'>Read More..</a>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>";
+                                    
+               $("#divRefresh").append(_data);
+                });
+            }
+        },
+        error: function(err) {
+            var error = JSON.parse(err.responseText);
+            $("<div></div>").html(error.Message).dialog({ modal: true, title: "Error", buttons: { "Ok": function() { $(this).dialog("close"); } } }).show();
+        }
+    });
+}
+ </script>
 }
