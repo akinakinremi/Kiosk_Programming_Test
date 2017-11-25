@@ -19,8 +19,9 @@ namespace StackOverFlowApp.Web
             var s = new StreamWriter(fs);
 
             s.Close();
-
             fs.Close();
+            s.Dispose();
+            
 
             //log it
             var fs1 = new FileStream(ss, FileMode.Append, FileAccess.Write);
@@ -32,6 +33,7 @@ namespace StackOverFlowApp.Web
             s1.WriteLine("===============================================================================================");
             s1.Close();
             fs1.Close();
+            s1.Dispose();
         }
     }
 

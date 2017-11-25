@@ -30,6 +30,7 @@ namespace StackOverFlowApp.Web
             var kernel = new StandardKernel();
             kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<IServiceManager>().To<ServiceManager>();
+            kernel.Bind<IServiceOperation>().To<ServiceOperation>();
             return kernel;
         }
         protected override void OnApplicationStarted()

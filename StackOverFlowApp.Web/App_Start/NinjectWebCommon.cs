@@ -72,6 +72,7 @@ namespace StackOverFlowApp.Web
         {
             // unit of work per request
             kernel.Bind<IServiceManager>().To<ServiceManager>().InRequestScope();
+            kernel.Bind<IServiceOperation>().To<ServiceOperation>().InRequestScope();
             // default binding for everything except unit of work
            // kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().BindDefaultInterface());
         }

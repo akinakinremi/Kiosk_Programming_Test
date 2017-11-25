@@ -5,3 +5,17 @@ StackTrace:  at System.Net.HttpWebRequest.GetResponse()
  at StackOverFlowApp.Web.DAL.ServiceManager.GetTopQuestions() in C:\SolutionKioskFiles\Solutions\Personal\TestCodes\StackOverFlowApp2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 66
 Date&Time: 2017-11-25 12:37:41.597
 ===============================================================================================
+Title: ServiceBuilder>>GetTopQuestions Function Error
+Message: The remote name could not be resolved: 'api.stackexchange.com'
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.ServiceOperation.CallService(String serviceurl) in C:\SolutionKioskFiles\Solutions\Personal\TestCodes\StackOverFlowApp2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceOperation.cs:line 17
+ at StackOverFlowApp.Web.DAL.ServiceManager.GetTopQuestions() in C:\SolutionKioskFiles\Solutions\Personal\TestCodes\StackOverFlowApp2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 67
+Date&Time: 2017-11-25 21:36:46.581
+===============================================================================================
+Title: ServiceBuilder>>GetTopQuestions Function Error
+Message: The remote name could not be resolved: 'api.stackexchange.com'
+StackTrace:  at System.Net.HttpWebRequest.GetResponse()
+ at StackOverFlowApp.Web.DAL.ServiceOperation.CallService(String serviceurl) in C:\SolutionKioskFiles\Solutions\Personal\TestCodes\StackOverFlowApp2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceOperation.cs:line 17
+ at StackOverFlowApp.Web.DAL.ServiceManager.GetTopQuestions() in C:\SolutionKioskFiles\Solutions\Personal\TestCodes\StackOverFlowApp2\StackOverFlowApp\StackOverFlowApp.Web\DAL\ServiceManager.cs:line 67
+Date&Time: 2017-11-25 21:39:55.801
+===============================================================================================
