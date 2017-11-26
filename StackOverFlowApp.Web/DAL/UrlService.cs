@@ -5,21 +5,20 @@ namespace StackOverFlowApp.Web.DAL
 {
     public class UrlService : IUrlService
     {
-        public string GetMainUrl()
-        {
-            return "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow&filter=withbody";
+        private readonly string serviceUrl;
+
+        public UrlService() : this(null) {
+            this.serviceUrl = "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow";
         }
 
-        public string GetUrlByQuestion(string questionId)
+        public UrlService(string questionid)
         {
-            if (!string.IsNullOrEmpty(questionId))
-            {
-                return string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionId);
-            }
-            else
-            {
-                return string.Empty;
-            }
+            this.serviceUrl = string.IsNullOrEmpty(questionid) ? "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow" : string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionid);
+        }
+
+        public string GetServiceUrl
+        {
+            get { return serviceUrl; }
         }
     }
 }

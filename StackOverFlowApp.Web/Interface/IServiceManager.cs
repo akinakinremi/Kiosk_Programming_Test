@@ -5,6 +5,7 @@ namespace StackOverFlowApp.Web.Interface
 {
     public interface IServiceManager
     {
+        void SetServiceUrl(IUrlService urlService);
         Item GetQuestionById(string questionId);
         IEnumerable<Item> GetTopQuestions();
     }

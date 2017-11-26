@@ -2,8 +2,6 @@
 {
     public interface IUrlService
     {
-        string GetMainUrl();
-
-        string GetUrlByQuestion(string questionid);
+        string GetServiceUrl { get; }        
     }
 }

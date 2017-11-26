@@ -20,17 +20,9 @@ namespace StackOverFlowApp.Web.DAL
 
         public void SetServiceUrl(IUrlService urlService)
         {
-            _serviceUrl = urlService.
+            _serviceUrl = urlService.GetServiceUrl;
         }
-
-        //public ServiceManager(string questionId)
-        //{
-        //    if (!string.IsNullOrEmpty(questionId))
-        //    {                
-        //        _serviceUrl = string.Format("https://api.stackexchange.com/2.1/questions/{0}?order=desc&sort=activity&site=stackoverflow&filter=withbody", questionId);
-        //    }
-        //}
-
+        
         public Item GetQuestionById(string questionId)
         {
             try
