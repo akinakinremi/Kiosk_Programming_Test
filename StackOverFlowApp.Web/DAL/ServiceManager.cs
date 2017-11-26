@@ -10,12 +10,17 @@ namespace StackOverFlowApp.Web.DAL
 {
     public class ServiceManager : IServiceManager
     {
-        private string _serviceUrl = "https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&site=stackoverflow&filter=withbody";
+        private string _serviceUrl;
 
         private IServiceOperation _serviceOperation;
         public ServiceManager(IServiceOperation serviceOperation)
         {
             _serviceOperation = serviceOperation;
+        }
+
+        public void SetServiceUrl(IUrlService urlService)
+        {
+            _serviceUrl = urlService.
         }
 
         //public ServiceManager(string questionId)
